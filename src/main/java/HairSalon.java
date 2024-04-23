@@ -16,7 +16,11 @@ public class HairSalon {
     // it should throw an IllegalArgumentException with a message explaining that
     // only weekdays are valid.
     public boolean isOpen(String weekDay) {
-        return false;
+        if (!weekDay.endsWith("day")) {
+            throw new IllegalArgumentException("Only weekdays are allowed.");
+        }
+        boolean isDayPresentInArray = Arrays.asList(openingDays).contains(weekDay);
+        return isDayPresentInArray;
     }
 
 }
