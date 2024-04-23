@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -31,10 +32,11 @@ class HairSalonTest {
 
     @Test
     public void testExceptionIsThrownIfWeekdayDoesNotEndInDay() {
-
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> hairSalon.isOpen(1, 0));
+        String input = "Mon"; // Example input that does not end with "day"
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> hairSalon.isOpen(input));
 
         String expected = "Only weekdays are allowed.";
+        assertEquals(expected, exception.getMessage());
     }
 
 }
